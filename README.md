@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Heroku
+The latest deployed project can be found here:
+https://lost-in-translation-deploy.herokuapp.com/
+
 ## Available Scripts
 
 In the project directory, you can run:
