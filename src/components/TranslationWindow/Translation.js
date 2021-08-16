@@ -1,6 +1,6 @@
 const Translation = () => {
     return (
-        <div>
+        <div className="Translation">
 
         </div>
     );

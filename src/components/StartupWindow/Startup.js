@@ -1,7 +1,7 @@
 const Startup = () => {
     return (
-        <div>
-
+        <div className="Startup">
+            <h1>This is a temp header</h1>
         </div>
     );
 }
