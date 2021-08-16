@@ -1,4 +1,4 @@
 # lost-in-translation
 
-# To run project
+## To run project
 npm start
