@@ -1,8 +1,9 @@
 {
-    "users": [
-        
-    ],
-    "searches": [
-
-    ]
+  "users": [
+    {
+      "id": 1,
+      "name": "test"
+    }
+  ],
+  "searches": []
 }
