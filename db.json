@@ -3,6 +3,10 @@
     {
       "id": 1,
       "name": "test"
+    },
+    {
+      "name": "jaber",
+      "id": 2
     }
   ],
   "searches": []

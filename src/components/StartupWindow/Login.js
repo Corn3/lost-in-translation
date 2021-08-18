@@ -28,7 +28,7 @@ const Login = () => {
 
             const data = { name: username };
 
-            fetch('http://localhost:8000/users', {
+            fetch('http://localhost:3006/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ const Login = () => {
                 .then(response => response.json())
                 .then(data => {
                     console.log('Success:', data);
-                    history.push('/Profile');
+                    history.push('/translation');
                 })
                 .catch((error) => {
                     console.error('Error:', error);
