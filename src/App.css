@@ -1,0 +1,64 @@
+.container {
+    text-align: center;
+    margin: 0 10vw 0 10vw;
+}
+
+.text-field-container, .translation-field-container {
+    position: relative;
+}
+
+.input-text-field {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1rem 4rem;
+    border-radius: 20px;
+    outline: none;
+}
+
+.input-symbol, .input-button {
+    position: absolute;
+    z-index: 2;
+}
+
+.input-symbol {
+    font-size: 2rem;
+}
+
+.input-button {
+    transform: translate(-120%, 20%);
+}
+
+#text-button {
+    width: 3rem;
+    height: 70%;
+    border-radius: 100%;
+}
+@media screen and (min-width: 1300px) {
+    .text-size-m {
+        font-size: 1.4vw;
+    }
+    .input-symbol {
+        margin: 0.5vw 0.4vw;
+    }
+}
+@media screen and (max-width: 1300px) {
+    .text-size-m {
+        font-size: 2vw;
+    }
+    .input-symbol {
+        margin: 0.6vw 0.5vw;
+    }
+}
+@media screen and (max-width: 900px) {
+    .text-size-m {
+        font-size: 2.75vw;
+    }
+    .input-symbol {
+        margin: 0.5vw 1vw;
+    }
+}
+
+.sign-img {
+    width: 10%;
+    height: auto;
+}
