@@ -3,7 +3,12 @@
     margin: 0 10vw 0 10vw;
 }
 
-.text-field-container, .translation-field-container {
+.field-container {
+    background-color: #FFC760;
+    padding: 2rem;
+}
+
+.text-field-container {
     position: relative;
 }
 
@@ -58,7 +63,45 @@
     }
 }
 
-.sign-img {
-    width: 10%;
+.translation-field-container {
+    margin-top: 10vh;
+    border: 1px solid gray;
+    border-radius: 20px;
+    box-shadow: -0.1em -0.2em 1em gray;
+    height: 50vh;
+}
+
+.translation-field {
+    box-sizing: border-box;
+    padding: 2em;
+    height: 90%;
+    overflow-y: auto;
+}
+
+.translation-field-footer {
+    background-color: purple;
+    min-height: 10%;
+    height: 2.5rem;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+.translation-field-info {
+    position: absolute;
+    transform: translate(50%, 20%);
+    background-color: white;
+    border-radius: 20px;
+    width: 10rem;
+    max-width: 20%;
+    padding: 0.3rem 0;
+}
+
+.sign-img, .fallback-img {
+    width: 8%;
+    margin: 0 -0.1em;
     height: auto;
+}
+
+.fallback-img {
+    opacity: 0;
 }

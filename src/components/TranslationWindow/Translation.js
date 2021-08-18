@@ -9,7 +9,11 @@ const Translation = () => {
     const DEFAULT_PATH = `${process.env.PUBLIC_URL}/assets/images/`
 
     const translateButtonClick = () => {
-        setSymbols(words.split(""));
+        if (words.length === 0) {
+            alert("Please enter letters, more than 0 and max 40.")
+        } else {
+            setSymbols(words.split(""));
+        }
     }
 
     const onInputChange = event => {
@@ -18,16 +22,21 @@ const Translation = () => {
 
     return (
         <div className="Translation">
-            <label htmlFor="words">Text to be translated</label>
-            <div className="text-field-container">
-                <span className="input-symbol">⌨|</span>
-                <input id="words" className="text-size-m input-text-field" placeholder="Enter a text to be translated (Max 40 letters)" maxLength="40" onChange={onInputChange}></input>
-                <button id="text-button" className="input-button" onClick={translateButtonClick}>GO</button>
+            <div className="field-container">
+                <label htmlFor="words">Text to be translated</label>
+                <div className="text-field-container">
+                    <span className="input-symbol">⌨|</span>
+                    <input id="words" className="text-size-m input-text-field" placeholder="Enter a text to be translated (Max 40 letters)" maxLength="40" onChange={onInputChange}></input>
+                    <button id="text-button" className="input-button" onClick={translateButtonClick}>GO</button>
+                </div>
             </div>
             <div className="translation-field-container">
-                {
-                    symbols.map((s) => <Sign symbol={DEFAULT_PATH + s + ".png"} />)
-                }
+                <div className="translation-field">
+                    {
+                        symbols.map((s, i) => <Sign key={i} symbol={DEFAULT_PATH + s + ".png"} />)
+                    }
+                </div>
+                <footer className="translation-field-footer"><div className="translation-field-info">Translation</div></footer>
             </div>
         </div>
     );
