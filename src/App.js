@@ -9,16 +9,15 @@ import Startup from "./components/StartupWindow/Startup";
 import Translation from "./components/TranslationWindow/Translation";
 import NotFound from "./components/NotFound/NotFound";
 import AppContainer from "./hoc/AppContainer";
+import HeaderContainer from "./hoc/HeaderContainer";
 
 const App = () => {
     return (
         <BrowserRouter>
+            <HeaderContainer>
+                <div className="main-page-text">Lost in translation</div>
+            </HeaderContainer>
             <AppContainer>
-                <div>
-                    <h1>
-                        TEST
-                    </h1>
-                </div>
                 <main>
                     <Switch>
                         <Route path="/" exact component={Startup} />
