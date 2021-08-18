@@ -1,3 +1,4 @@
+
 import "./App.css";
 import {
     BrowserRouter,
@@ -16,12 +17,14 @@ const App = () => {
             <AppContainer>
                 <div>
                     <h1>
-                        TEST
+                        Lost in translation
                     </h1>
                 </div>
                 <main>
                     <Switch>
-                        <Route path="/" exact component={Startup} />
+                        <Route exact path="/" component={Login} />
+                        <Route path="/Startup" component={Startup} />    
+                        <Route path="/Profile" component={ Profile } />
                         <Route path="/translation" component={Translation} />
                         <Route path="*" component={NotFound} />
                     </Switch>
