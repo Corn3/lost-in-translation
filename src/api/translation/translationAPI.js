@@ -34,3 +34,16 @@ export async function getTextDataWithId(id) {
         console.log(error);
     }
 }
+export async function deleteTextData(id) {
+    try {
+        const response = await fetch(TEXT_DEFAULT_URL + "/" + id, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json"
+            },
+        });
+        return response.json;
+    } catch (error) {
+        console.log(error);
+    }
+}

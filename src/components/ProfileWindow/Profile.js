@@ -4,10 +4,11 @@ import 'mdbreact/dist/css/mdb.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { getTextDataWithId } from '../../api/translation/translationAPI';
+import { getTextDataWithId, deleteTextData } from '../../api/translation/translationAPI';
 import { getUserData } from '../../api/user/userAPI';
 import { getStorage, removeItemStorage } from '../../storage';
 import Post from "./Post"
+
 
 const Profile = (props) => {
     const history = useHistory();
@@ -33,17 +34,31 @@ const Profile = (props) => {
         setPosts(p);
     }
 
+    async function handleClearHistory() {
+        for (const post of posts)
+            (await deleteTextData(post.id))
+
+    }
+
+
     return (
         <div className="Profile">
             <h1>Your Profile</h1>
-            <button id="clearTranslationsBtn" className="btn btn-danger" >Clear history</button>
+            <button id="clearTranslationsBtn" onClick={handleClearHistory} className="btn btn-danger" >Clear history</button>
             <button onClick={handleLogout} className="btn btn-secondary">Sign out</button>
-            <ol>
-                {
-                    posts.map((s, i) => <Post key={i} post={s} />)
-                }
-            </ol>
+            <div className="translation-field-container">
+                <div className="translation-field">
+                    <ol>
+                        {
+                            posts.map((s, i) => <Post key={i} post={s} />)
+                        }
+                    </ol>
+
+                </div>
+            </div>
         </div>
+
+
     );
 }
 
