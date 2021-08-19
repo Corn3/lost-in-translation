@@ -55,6 +55,13 @@
     height: 70%;
     border-radius: 100%;
 }
+#mb{
+    width: 50%;
+    text-align: center;
+    margin: 0 10vw 0 21vw; 
+
+}
+
 @media screen and (min-width: 1300px) {
     .text-size-m {
         font-size: 1.4vw;
