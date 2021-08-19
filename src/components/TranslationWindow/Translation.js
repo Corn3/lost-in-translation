@@ -44,7 +44,7 @@ const Translation = () => {
             <div className="translation-field-container">
                 <div className="translation-field">
                     {
-                        symbols.map((s, i) => <Sign key={i} symbol={DEFAULT_PATH + s + ".png"} />)
+                        symbols.map((s, i) => <Sign key={s + i} symbol={DEFAULT_PATH + s + ".png"} />)
                     }
                 </div>
                 <footer className="translation-field-footer"><div className="translation-field-info">Translation</div></footer>
