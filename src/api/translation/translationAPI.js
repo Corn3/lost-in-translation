@@ -1,12 +1,11 @@
-
-const DEFAULT_URL = "localhost:3006/searches"
+import { DEFAULT_URL } from "../../resource/constants";
+const TEXT_DEFAULT_URL = DEFAULT_URL + "searches";
 
 export async function postTextData(text) {
     try {
-        const response = await fetch(DEFAULT_URL, {
+        const response = await fetch(TEXT_DEFAULT_URL, {
             method: 'POST',
             headers: {
-                "Access-Control-Allow-Origin": "http://localhost:3000",
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(text)
@@ -19,7 +18,7 @@ export async function postTextData(text) {
 
 export async function getTextData() {
     try {
-        const response = await fetch(DEFAULT_URL);
+        const response = await fetch(TEXT_DEFAULT_URL);
         return response.json;
     } catch (error) {
         console.log(error);

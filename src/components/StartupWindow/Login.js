@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
+import { getUserData, postUserData } from '../../api/user/userAPI';
 import { getStorage } from '../../storage';
 
 
@@ -18,32 +19,14 @@ const Login = props => {
     };
 
     // This saves the user's name to local storage
-    function handleLogin() {
-        //  console.log(username);
-        //  localStorage.setItem('username', username);
-        //  history.push('./')
+    async function handleLogin() {
         if (username.match(/(^[A-Za-z]{1,10})([ ]{0,1})([A-Za-z]{3,10})$/)) {
 
             localStorage.setItem('username', username)
 
             const data = { name: username };
-
-            fetch('http://localhost:3006/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Success:', data);
-                    history.push('/translation');
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-                props.onLogin(username);
+            postUserData(data);
+            props.onLogin(username);
         }
 
         else if (username === null || username === "") {
