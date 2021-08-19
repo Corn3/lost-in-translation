@@ -6,7 +6,9 @@ import {
     Route,
     NavLink
 } from "react-router-dom";
+import Login from "./components/StartupWindow/Login";
 import Startup from "./components/StartupWindow/Startup";
+import Profile from "./components/ProfileWindow/Profile";
 import Translation from "./components/TranslationWindow/Translation";
 import NotFound from "./components/NotFound/NotFound";
 import Login from "./components/StartupWindow/Login";
