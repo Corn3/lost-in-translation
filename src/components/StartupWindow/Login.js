@@ -1,31 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import { getUserData, postUserData } from '../../api/user/userAPI';
-import { getStorage } from '../../storage';
+import { getStorage, setItemStorage } from '../../storage';
 
 
 
 const Login = props => {
-    const history = useHistory();
-    useEffect(() => {
-        if (getStorage("username")) {
-            history.push('/');
-        }
-    })
     // This handles the user's name input
     const [username, setUsername] = useState('');
     const handleUserInput = event => {
         setUsername(event.target.value); //asyn
     };
 
+    async function findUser() {
+        const user = (await getUserData(username))
+        if(user.length < 1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     // This saves the user's name to local storage
     async function handleLogin() {
         if (username.match(/(^[A-Za-z]{1,10})([ ]{0,1})([A-Za-z]{3,10})$/)) {
 
-            localStorage.setItem('username', username)
+            setItemStorage('username', username);
 
-            const data = { name: username };
-            postUserData(data);
+            const userExists = await findUser();
+            if(userExists === false) {
+                const data = { name: username };
+                postUserData(data);
+            }
+            
             props.onLogin(username);
         }
 
@@ -47,7 +55,9 @@ const Login = props => {
                         <input id="username" type="text" placeholder="What's your full name?" className="form-control"  onChange={handleUserInput} />
                     </div>
                     <div>
-                        <button type="submit" onClick={handleLogin} className="btn btn-primary btn-lg"> Login</button>
+                        <Link to="/">
+                            <button type="submit" onClick={handleLogin} className="btn btn-primary btn-lg"> Login</button>
+                        </Link>
                     </div>
 
                 </form>
