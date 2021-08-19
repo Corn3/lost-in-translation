@@ -41,7 +41,8 @@ const Profile = (props) => {
     async function handleClearHistory() {
         for (const post of posts)
             (await deleteTextData(post.id))
-
+        setPosts("");
+        setLimitPosts("");
     }
 
 
@@ -53,9 +54,9 @@ const Profile = (props) => {
             <div className="translation-field-container">
                 <div className="translation-field">
                     <ol>
-                      {
-                        limitPosts.map((s, i) => <Post key={i} post={s} />)
-                      }
+                        {
+                            limitPosts && limitPosts.map((s, i) => <Post key={i} post={s} />)
+                        }
                     </ol>
                 </div>
             </div>
