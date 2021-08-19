@@ -1,27 +1,21 @@
 import {Link } from 'react-router-dom';
-import { MDBIcon } from "mdbreact";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
+import { removeItemStorage } from '../../storage';
 
-const Profile = () => {
-    const username = localStorage.getItem('username');
-    
+const Profile = (props) => {
+
     function handleLogout() {
-        localStorage.clear();
+        removeItemStorage("username");
+        props.onLogout("");
     };
 
     return (
         <div className="Profile">
-               <h1>Your Profile</h1>
-               <div id="username">
-              <p> <MDBIcon icon="user" className="mr-2" /> {username}</p>
-            </div>
+            <h1>Your Profile</h1>
             <button id="clearTranslationsBtn"  className="btn btn-danger" >Clear history</button>
-            <Link to="/">
-                <button  onClick={handleLogout} className="btn btn-secondary">Sign out</button>
-            </Link>
-
+            <button  onClick={handleLogout} className="btn btn-secondary">Sign out</button>
         </div>
     );
 }

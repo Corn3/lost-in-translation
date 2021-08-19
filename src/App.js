@@ -13,19 +13,43 @@ import Translation from "./components/TranslationWindow/Translation";
 import NotFound from "./components/NotFound/NotFound";
 import AppContainer from "./hoc/AppContainer";
 import HeaderContainer from "./hoc/HeaderContainer";
+import { MDBIcon } from "mdbreact";
+import { useEffect, useState } from "react";
+import { getStorage } from "./storage";
 
 const App = () => {
+
+    const [userName, setUserName] = useState("");
+
+    useEffect(() => {
+        setUserName(getStorage("username"));
+    }, [])
+
+    const handleUsername = (name = "") => {
+        setUserName(name);
+    }
+
     return (
         <BrowserRouter>
             <HeaderContainer>
                 <div className="main-page-text">Lost in translation</div>
+                <NavLink to="Profile">
+                    <div id="username">
+                        <p> <MDBIcon icon="user" className="mr-2" /> {userName}</p>
+                    </div>
+                </NavLink>
+                <div className="main-page-profile"></div>
             </HeaderContainer>
             <AppContainer>
                 <main>
                     <Switch>
-                        <Route exact path="/" component={Login} />
-                        <Route path="/Startup" component={Startup} />    
-                        <Route path="/Profile" component={ Profile } />
+                        <Route exact path="/" component={Startup} />
+                        <Route path="/login">
+                            <Login onLogin={handleUsername} />
+                        </Route>
+                        <Route path="/profile">
+                            <Profile onLogout={handleUsername} />
+                        </Route>
                         <Route path="/translation" component={Translation} />
                         <Route path="*" component={NotFound} />
                     </Switch>

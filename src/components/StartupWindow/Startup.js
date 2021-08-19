@@ -1,19 +1,22 @@
-// import {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import {Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { getStorage } from '../../storage';
 const Startup = () => {
-    const username = localStorage.getItem('username');
+
+    const history = useHistory();
+
+    useEffect(() => {
+        if(!getStorage("username")) {
+            history.push("/login");
+        } else {
+            history.push("/translation");
+        }
+    })
+
     return (
-        // <div className="Startup">
-        //     <h1>This is a temp header</h1>
-        // </div>
         
-        <div>
-            <Link to="/Profile">
-                <div id="username">
-                    {username}
-                </div>
-            </Link>
-    
+        <div className="Startup">
+            
         </div>
 
     

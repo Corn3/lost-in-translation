@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
+import { getStorage } from '../../storage';
 
 
 
-const Login = () => {
+const Login = props => {
     const history = useHistory();
     useEffect(() => {
-        if (localStorage.length > 0) {
+        if (getStorage("username")) {
             history.push('/');
         }
-    },[history])
+    })
     // This handles the user's name input
     const [username, setUsername] = useState('');
     const handleUserInput = event => {
@@ -43,6 +44,7 @@ const Login = () => {
                 .catch((error) => {
                     console.error('Error:', error);
                 });
+                props.onLogin(username);
         }
 
         else if (username === null || username === "") {
@@ -56,7 +58,6 @@ const Login = () => {
     return (
         <main className="Login">
             <header>
-                <h1>Lost in Translation</h1>
                 <h2>Welcome</h2>
 
                 <form className="mt-3">
@@ -64,9 +65,7 @@ const Login = () => {
                         <input id="username" type="text" placeholder="What's your full name?" className="form-control"  onChange={handleUserInput} />
                     </div>
                     <div>
-                        <Link to="/">
-                            <button type="submit" onClick={handleLogin} className="btn btn-primary btn-lg"> Login</button>
-                        </Link>
+                        <button type="submit" onClick={handleLogin} className="btn btn-primary btn-lg"> Login</button>
                     </div>
 
                 </form>
