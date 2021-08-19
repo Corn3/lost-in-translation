@@ -43,7 +43,7 @@ const Login = props => {
                 <h2>Welcome</h2>
 
                 <form className="mt-3">
-                    <div className="mb-3" style={{ width:`50%` }}>
+                    <div className="mb-3"  id="mb">
                         <input id="username" type="text" placeholder="What's your full name?" className="form-control"  onChange={handleUserInput} />
                     </div>
                     <div>
