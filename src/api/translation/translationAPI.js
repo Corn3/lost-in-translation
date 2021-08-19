@@ -19,7 +19,17 @@ export async function postTextData(text) {
 export async function getTextData() {
     try {
         const response = await fetch(TEXT_DEFAULT_URL);
-        return response.json;
+        return await response.json();
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function getTextDataWithId(id) {
+    try {
+        const response = await fetch(TEXT_DEFAULT_URL + "?poster_id=" + id);
+        const posts = await response.json();
+        return posts;
     } catch (error) {
         console.log(error);
     }
