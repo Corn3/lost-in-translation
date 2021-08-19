@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getTextData, postTextData } from "../../api/translation/translationAPI";
+import { postTextData } from "../../api/translation/translationAPI";
 import Sign from "./Sign";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
@@ -7,6 +7,7 @@ import 'mdbreact/dist/css/mdb.css';
 import { useEffect } from "react";
 import { getStorage } from "../../storage";
 import { useHistory } from "react-router-dom";
+import { getUserData } from "../../api/user/userAPI";
 
 const Translation = () => {
 
@@ -21,11 +22,17 @@ const Translation = () => {
         }
     })
 
-    const translateButtonClick = () => {
+    async function translateButtonClick() {
         if (words.length === 0) {
             alert("Please enter letters, more than 0 and max 40.")
         } else {
             setSymbols(words.toLowerCase().split(""));
+            const userId = (await getUserData(getStorage("username")))[0].id;
+            const data = { 
+                text: words,
+                poster_id: userId
+             }
+            postTextData(data);
         }
     }
 
