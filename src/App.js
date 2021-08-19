@@ -1,3 +1,4 @@
+
 import "./App.css";
 import {
     BrowserRouter,
@@ -8,6 +9,8 @@ import {
 import Startup from "./components/StartupWindow/Startup";
 import Translation from "./components/TranslationWindow/Translation";
 import NotFound from "./components/NotFound/NotFound";
+import Login from "./components/StartupWindow/Login";
+import Profile from "./components/ProfileWindow/Profile";
 import AppContainer from "./hoc/AppContainer";
 import HeaderContainer from "./hoc/HeaderContainer";
 
@@ -20,7 +23,9 @@ const App = () => {
             <AppContainer>
                 <main>
                     <Switch>
-                        <Route path="/" exact component={Startup} />
+                        <Route exact path="/" component={Login} />
+                        <Route path="/Startup" component={Startup} />    
+                        <Route path="/Profile" component={ Profile } />
                         <Route path="/translation" component={Translation} />
                         <Route path="*" component={NotFound} />
                     </Switch>
