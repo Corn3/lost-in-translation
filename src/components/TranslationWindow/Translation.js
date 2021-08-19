@@ -23,7 +23,6 @@ const Translation = () => {
     return (
         <div className="Translation">
             <div className="field-container">
-                <label htmlFor="words">Text to be translated</label>
                 <div className="text-field-container">
                     <span className="input-symbol">⌨|</span>
                     <input id="words" className="text-size-m input-text-field" placeholder="Enter a text to be translated (Max 40 letters)" maxLength="40" onChange={onInputChange}></input>

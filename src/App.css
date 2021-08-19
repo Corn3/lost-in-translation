@@ -4,19 +4,19 @@
 }
 
 .header {
-    text-align: center;
+    text-align: left;
     background-color: #FFC760;
     margin: 0;
     padding: 1rem;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #EAB452;
 }
 .main-page-text {
+    margin-left: 15vw;
     font-size: 36px;
     font-weight: bold;
 }
 
 .field-container {
-    background-color: #FFC760;
     padding: 2rem;
 }
 
