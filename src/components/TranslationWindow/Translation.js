@@ -25,7 +25,7 @@ const Translation = () => {
         if (words.length === 0) {
             alert("Please enter letters, more than 0 and max 40.")
         } else {
-            setSymbols(words.split(""));
+            setSymbols(words.toLowerCase().split(""));
         }
     }
 
