@@ -20,6 +20,7 @@ import { getStorage } from "./storage";
 const App = () => {
 
     const [userName, setUserName] = useState("");
+    const [page, setPage] = useState("Start");
 
     useEffect(() => {
         setUserName(getStorage("username"));
@@ -29,10 +30,14 @@ const App = () => {
         setUserName(name);
     }
 
+    const changeTitle = (title) => {
+        setPage(title);
+    }
+
     return (
         <BrowserRouter>
             <HeaderContainer>
-                <div className="main-page-text">Lost in translation</div>
+                <div className="main-page-text">Lost in translation - {page}</div>
                 <NavLink to="Profile">
                     <div id="username">
                         <p> <MDBIcon icon="user" className="mr-2" /> {userName}</p>
@@ -45,12 +50,14 @@ const App = () => {
                     <Switch>
                         <Route exact path="/" component={Startup} />
                         <Route path="/login">
-                            <Login onLogin={handleUsername} />
+                            <Login handleTitle={changeTitle} onLogin={handleUsername} />
                         </Route>
                         <Route path="/profile">
-                            <Profile onLogout={handleUsername} />
+                            <Profile handleTitle={changeTitle} onLogout={handleUsername} />
                         </Route>
-                        <Route path="/translation" component={Translation} />
+                        <Route path="/translation">
+                            <Translation handleTitle={changeTitle} />
+                        </Route>
                         <Route path="*" component={NotFound} />
                     </Switch>
                 </main>

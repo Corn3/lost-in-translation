@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { getUserData, postUserData } from '../../api/user/userAPI';
 import { getStorage, setItemStorage } from '../../storage';
 
@@ -12,6 +11,16 @@ const Login = props => {
     const handleUserInput = event => {
         setUsername(event.target.value); //asyn
     };
+
+    const history = useHistory();
+
+    useEffect(() => {
+        if (getStorage("username")) {
+            history.push('/');
+        } else {
+            props.handleTitle("Login");
+        }
+    })
 
     async function findUser() {
         const user = (await getUserData(username))

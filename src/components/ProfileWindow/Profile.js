@@ -20,6 +20,7 @@ const Profile = (props) => {
     function handleLogout() {
         removeItemStorage("username");
         props.onLogout("");
+        history.push("/");
     };
 
     useEffect(() => {
@@ -28,6 +29,7 @@ const Profile = (props) => {
         } else {
             getUserPosts();
         }
+        props.handleTitle("Profile");
     }, [])
 
     async function getUserPosts() {
@@ -45,20 +47,29 @@ const Profile = (props) => {
         setLimitPosts("");
     }
 
+    function onTranslationClick() {
+        history.push("/translation");
+    }
+
 
     return (
         <div className="Profile">
-            <h1>Your Profile</h1>
-            <button id="clearTranslationsBtn" onClick={handleClearHistory} className="btn btn-danger" >Clear history</button>
-            <button onClick={handleLogout} className="btn btn-secondary">Sign out</button>
-            <div className="translation-field-container">
-                <div className="translation-field">
+            <div className="button-group">
+                <button id="clearTranslationsBtn" onClick={handleClearHistory} className="btn btn-danger" >Clear history</button>
+                <button onClick={handleLogout} className="btn btn-secondary">Sign out</button>
+                <button onClick={ onTranslationClick } className="btn btn-primary">Translate</button>
+            </div>
+            <div className="posts-field-container">
+                <div className="posts-field">
                     <ol>
                         {
                             limitPosts && limitPosts.map((s, i) => <Post key={i} post={s} />)
                         }
                     </ol>
                 </div>
+                <footer className="translation-field-footer">
+                    <div className="translation-field-info">Posts</div>
+                </footer>
             </div>
         </div>
 

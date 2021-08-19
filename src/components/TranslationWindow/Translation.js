@@ -9,7 +9,7 @@ import { getStorage } from "../../storage";
 import { useHistory } from "react-router-dom";
 import { getUserData } from "../../api/user/userAPI";
 
-const Translation = () => {
+const Translation = (props) => {
 
     const [words, setWords] = useState("");
     const [symbols, setSymbols] = useState([]);
@@ -19,6 +19,8 @@ const Translation = () => {
     useEffect(() => {
         if (!getStorage("username")) {
             history.push('/');
+        } else {
+            props.handleTitle("Translation");
         }
     })
 

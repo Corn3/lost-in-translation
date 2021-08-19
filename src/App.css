@@ -15,6 +15,13 @@
     font-size: 36px;
     font-weight: bold;
 }
+.profile-text {
+    margin-top: 2vh;
+}
+
+.button-group {
+    margin-top: 10px;
+}
 
 .main-page-profile {
     text-align: right;
@@ -87,7 +94,7 @@
     }
 }
 
-.translation-field-container {
+.translation-field-container, .posts-field-container {
     margin-top: 10vh;
     border: 1px solid gray;
     border-radius: 20px;
@@ -96,7 +103,12 @@
     margin-bottom: 20px;
 }
 
-.translation-field {
+.posts-field-container{
+    height: 40vh;
+    text-align: left;
+}
+
+.translation-field, .posts-field {
     box-sizing: border-box;
     padding: 2em;
     height: 90%;
@@ -105,6 +117,7 @@
 
 .translation-field-footer {
     background-color: purple;
+    text-align: center;
     min-height: 10%;
     height: 2.5rem;
     border-bottom-left-radius: inherit;
