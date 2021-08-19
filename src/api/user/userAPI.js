@@ -20,10 +20,11 @@ export async function postUserData(data) {
 }
 
 export async function getUserData(name) {
-    const user = await fetch(USERS_DEFAULT_URL + "?name=" + name)
-        .then(response => response.json())
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-    return user;
+    try {
+        const response = (await fetch(USERS_DEFAULT_URL + "?name=" + name));
+        const user = (await response.json());
+        return user;
+    } catch (error) {
+        console.log("Error: ", error)
+    }
 }
