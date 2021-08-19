@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getTextDataWithId, deleteTextData } from '../../api/translation/translationAPI';
 import { getUserData } from '../../api/user/userAPI';
+import { POST_LIMIT } from '../../resource/constants';
 import { getStorage, removeItemStorage } from '../../storage';
 import Post from "./Post"
 
@@ -14,6 +15,7 @@ const Profile = (props) => {
     const history = useHistory();
 
     const [posts, setPosts] = useState([]);
+    const [limitPosts, setLimitPosts] = useState([]);
 
     function handleLogout() {
         removeItemStorage("username");
@@ -26,12 +28,14 @@ const Profile = (props) => {
         } else {
             getUserPosts();
         }
-    })
+    }, [])
 
     async function getUserPosts() {
         const userId = (await getUserData(getStorage("username")))[0].id;
-        const p = (await getTextDataWithId(userId));
+        const p = (await getTextDataWithId(userId, 0));
+        const lp = (await getTextDataWithId(userId, POST_LIMIT));
         setPosts(p);
+        setLimitPosts(lp);
     }
 
     async function handleClearHistory() {
@@ -49,11 +53,10 @@ const Profile = (props) => {
             <div className="translation-field-container">
                 <div className="translation-field">
                     <ol>
-                        {
-                            posts.map((s, i) => <Post key={i} post={s} />)
-                        }
+                      {
+                        limitPosts.map((s, i) => <Post key={i} post={s} />)
+                      }
                     </ol>
-
                 </div>
             </div>
         </div>
