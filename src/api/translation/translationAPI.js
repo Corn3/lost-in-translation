@@ -25,9 +25,11 @@ export async function getTextData() {
     }
 }
 
-export async function getTextDataWithId(id) {
+export async function getTextDataWithId(id, limit = 0) {
     try {
-        const response = await fetch(TEXT_DEFAULT_URL + "?poster_id=" + id);
+        const url = TEXT_DEFAULT_URL + "?poster_id=" + id + ((limit > 0) ? "&_limit=" + limit : "");
+        console.log(url)
+        const response = await fetch(url);
         const posts = await response.json();
         return posts;
     } catch (error) {
