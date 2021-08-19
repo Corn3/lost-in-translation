@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getTextData, postTextData } from "../../api/translation/translationAPI";
 import Sign from "./Sign";
-import { MDBIcon } from "mdbreact";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
-import { Link } from "react-router-dom";
 
 const Translation = () => {
 
@@ -24,15 +22,8 @@ const Translation = () => {
     const onInputChange = event => {
         setWords(event.target.value)
     }
-    // ---------
-    const username = localStorage.getItem('username');
     return (
         <div className="Translation">
-            <Link to="Profile">
-              <div id="username">
-              <p> <MDBIcon icon="user" className="mr-2" /> {username}</p>
-            </div>
-            </Link>
             <div className="field-container">
                 <div className="text-field-container">
                     <span className="input-symbol">⌨|</span>
@@ -51,10 +42,5 @@ const Translation = () => {
         </div>
     );
 }
-
-/**
- * setStorage("user", user);
- * getStorage("user")
- */
 
 export default Translation;

@@ -16,6 +16,11 @@
     font-weight: bold;
 }
 
+.main-page-profile {
+    text-align: right;
+    font-size: 36px;
+}
+
 .field-container {
     padding: 2rem;
 }
@@ -81,6 +86,7 @@
     border-radius: 20px;
     box-shadow: -0.1em -0.2em 1em gray;
     height: 50vh;
+    margin-bottom: 20px;
 }
 
 .translation-field {
@@ -100,7 +106,7 @@
 
 .translation-field-info {
     position: absolute;
-    transform: translate(50%, 20%);
+    transform: translate(50%, 10%);
     background-color: white;
     border-radius: 20px;
     width: 10rem;
