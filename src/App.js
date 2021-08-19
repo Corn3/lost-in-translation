@@ -11,8 +11,6 @@ import Startup from "./components/StartupWindow/Startup";
 import Profile from "./components/ProfileWindow/Profile";
 import Translation from "./components/TranslationWindow/Translation";
 import NotFound from "./components/NotFound/NotFound";
-import Login from "./components/StartupWindow/Login";
-import Profile from "./components/ProfileWindow/Profile";
 import AppContainer from "./hoc/AppContainer";
 import HeaderContainer from "./hoc/HeaderContainer";
 
