@@ -13,11 +13,9 @@ const Profile = (props) => {
 
     return (
         <div className="Profile">
-               <h1>Your Profile</h1>
-            <Link to="/">
-                <button  onClick={handleLogout} className="btn btn-secondary">Sign out</button>
-            </Link>
-
+            <h1>Your Profile</h1>
+            <button id="clearTranslationsBtn"  className="btn btn-danger" >Clear history</button>
+            <button  onClick={handleLogout} className="btn btn-secondary">Sign out</button>
         </div>
     );
 }
