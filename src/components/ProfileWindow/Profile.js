@@ -1,15 +1,23 @@
-import {Link } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
-import { removeItemStorage } from '../../storage';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { getStorage, removeItemStorage } from '../../storage';
 
 const Profile = (props) => {
+    const history = useHistory();
 
     function handleLogout() {
         removeItemStorage("username");
         props.onLogout("");
     };
+
+    useEffect(() => {
+        if (!getStorage("username")) {
+            history.push('/');
+        }
+    })
 
     return (
         <div className="Profile">

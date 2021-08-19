@@ -4,12 +4,22 @@ import Sign from "./Sign";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
+import { useEffect } from "react";
+import { getStorage } from "../../storage";
+import { useHistory } from "react-router-dom";
 
 const Translation = () => {
 
     const [words, setWords] = useState("");
     const [symbols, setSymbols] = useState([]);
     const DEFAULT_PATH = `${process.env.PUBLIC_URL}/assets/images/`
+    const history = useHistory();
+
+    useEffect(() => {
+        if (!getStorage("username")) {
+            history.push('/');
+        }
+    })
 
     const translateButtonClick = () => {
         if (words.length === 0) {
