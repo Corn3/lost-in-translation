@@ -10,12 +10,14 @@ const Profile = () => {
     function handleLogout() {
         localStorage.clear();
     };
+
     return (
         <div className="Profile">
                <h1>Your Profile</h1>
                <div id="username">
               <p> <MDBIcon icon="user" className="mr-2" /> {username}</p>
             </div>
+            <button id="clearTranslationsBtn"  className="btn btn-danger" >Clear history</button>
             <Link to="/">
                 <button  onClick={handleLogout} className="btn btn-secondary">Sign out</button>
             </Link>
