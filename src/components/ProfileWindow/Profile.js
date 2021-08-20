@@ -33,7 +33,6 @@ const Profile = (props) => {
         const p = (await getTextDataWithId(userId));
         setPosts(p);
     }
-
     async function handleClearHistory() {
         for (const post of posts)
             (await deleteTextData(post.id))

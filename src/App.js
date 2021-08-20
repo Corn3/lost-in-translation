@@ -14,6 +14,7 @@ import NotFound from "./components/NotFound/NotFound";
 import AppContainer from "./hoc/AppContainer";
 import HeaderContainer from "./hoc/HeaderContainer";
 import { MDBIcon } from "mdbreact";
+import { Image,  } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { getStorage } from "./storage";
 
@@ -35,7 +36,10 @@ const App = () => {
                 <div className="main-page-text">Lost in translation</div>
                 <NavLink to="Profile">
                     <div id="username">
-                        <p> <MDBIcon icon="user" className="mr-2" /> {userName}</p>
+                    <div class="avatar-lg"><Image src="https://bootdey.com/img/Content/avatar/avatar2.png" id="img-avatar" alt="profile-image"/></div>
+                        <p id="name-txt"> {userName}</p>
+                        
+                    
                     </div>
                 </NavLink>
                 <div className="main-page-profile"></div>

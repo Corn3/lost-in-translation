@@ -15,7 +15,7 @@ const Login = props => {
 
     async function findUser() {
         const user = (await getUserData(username))
-        if(user.length < 1) {
+        if (user.length < 1) {
             return false;
         } else {
             return true;
@@ -29,11 +29,11 @@ const Login = props => {
             setItemStorage('username', username);
 
             const userExists = await findUser();
-            if(userExists === false) {
+            if (userExists === false) {
                 const data = { name: username };
                 postUserData(data);
             }
-            
+
             props.onLogin(username);
         }
 
@@ -47,21 +47,21 @@ const Login = props => {
 
     return (
         <main className="Login">
-            <header>
-                <h2>Welcome</h2>
+            <div className="translation-field-container" id= "form-container">
+                <div className="translation-field">
+                    <form className="mt-3">
+                        <div className="mb-3">
+                            <input id="username" type="text" placeholder="What's your full name?" id="input-txt" className="form-control" onChange={handleUserInput} />
+                        </div>
+                        <div>
+                            <Link to="/">
+                                <button type="submit" onClick={handleLogin} id="lg-btn" className="btn btn-primary btn-lg"> Login</button>
+                            </Link>
+                        </div>
 
-                <form className="mt-3">
-                    <div className="mb-3"  id="mb">
-                        <input id="username" type="text" placeholder="What's your full name?" className="form-control"  onChange={handleUserInput} />
-                    </div>
-                    <div>
-                        <Link to="/">
-                            <button type="submit" onClick={handleLogin} className="btn btn-primary btn-lg"> Login</button>
-                        </Link>
-                    </div>
-
-                </form>
-            </header>
+                    </form>
+                </div>
+            </div>
         </main>
     );
 }
