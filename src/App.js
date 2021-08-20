@@ -4,8 +4,7 @@ import {
     BrowserRouter,
     Switch,
     Route,
-    NavLink,
-    useHistory
+    NavLink
 } from "react-router-dom";
 import Login from "./components/StartupWindow/Login";
 import Profile from "./components/ProfileWindow/Profile";
@@ -23,8 +22,11 @@ const App = () => {
     const [page, setPage] = useState("Start");
     const [loginAction, setLoginAction] = useState("");
     const [navLinks, setNavLinks] = useState([]);
-    const history = useHistory();
 
+    /**
+     * Runs once the user logs in and updates the username- and
+     * login action states.
+     */
     useEffect(() => {
         const user = getStorage("username");
         const login = (!user) ? "" : "Logout"
@@ -36,12 +38,21 @@ const App = () => {
         setUserName(name);
     }
 
+    /**
+     * Sets the main page title to the current page name the user is at.
+     * 
+     * @param {*} title 
+     */
     const changeTitle = (title) => {
         setPage(title);
-        if (getStorage("username"))
+        if (getStorage("username")) {
             addLinksToNav();
+        }
     }
 
+    /**
+     * Resets the state of all bound states if the user clicks the logout button.
+     */
     const handleLoginAction = () => {
         if (loginAction === "Logout" && window.confirm("Are you sure you wish to logout?")) {
             removeItemStorage("username");
@@ -52,6 +63,9 @@ const App = () => {
         }
     }
 
+    /**
+     * Adds links to the nav bar when the user logs in.
+     */
     const addLinksToNav = () => {
         setLoginAction("Logout")
         setNavLinks(["Create post", "Logout"]);
@@ -87,10 +101,10 @@ const App = () => {
                             <Login handleTitle={changeTitle} onLogin={handleUsername} />
                         </Route>
                         <Route path="/profile">
-                            <Profile handleTitle={changeTitle} />
+                            <Profile user={userName} handleTitle={changeTitle} />
                         </Route>
                         <Route path="/translation">
-                            <Translation handleTitle={changeTitle} />
+                            <Translation user={userName} handleTitle={changeTitle} />
                         </Route>
                         <Route path="*" component={NotFound} />
                     </Switch>
