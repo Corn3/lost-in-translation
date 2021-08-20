@@ -37,7 +37,7 @@ const App = () => {
     return (
         <BrowserRouter>
             <HeaderContainer>
-                <div className="main-page-text">Lost in translation - {page}</div>
+                <div className="main-page-text bold-text">Lost in translation - {page}</div>
                 <NavLink to="Profile">
                     <div id="username">
                         <p> <MDBIcon icon="user" className="mr-2" /> {userName}</p>
