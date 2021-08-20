@@ -9,7 +9,7 @@ import { getStorage } from "../../storage";
 import { useHistory } from "react-router-dom";
 import { getUserData } from "../../api/user/userAPI";
 
-const Translation = () => {
+const Translation = (props) => {
 
     const [words, setWords] = useState("");
     const [symbols, setSymbols] = useState([]);
@@ -19,19 +19,39 @@ const Translation = () => {
     useEffect(() => {
         if (!getStorage("username")) {
             history.push('/');
+        } else {
+            props.handleTitle("Translation");
         }
     })
 
-    async function translateButtonClick() {
+    const translateButtonClick = () => {
+        sendData();
+    }
+
+    const checkCorrectInput = () => {
         if (words.length === 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    const handleButtonClick = event => {
+        if(event.key === "Enter") {
+            sendData();
+        }
+    }
+
+    async function sendData() {
+        if(checkCorrectInput() === false) {
             alert("Please enter letters, more than 0 and max 40.")
         } else {
             setSymbols(words.toLowerCase().split(""));
             const userId = (await getUserData(getStorage("username")))[0].id;
-            const data = { 
+            const data = {
                 text: words,
                 poster_id: userId
-             }
+            }
             postTextData(data);
         }
     }
@@ -39,22 +59,28 @@ const Translation = () => {
     const onInputChange = event => {
         setWords(event.target.value)
     }
+
+    
+
     return (
         <div className="Translation">
             <div className="field-container">
-                <div className="text-field-container">
-                    <span className="input-symbol">⌨|</span>
-                    <input id="words" className="text-size-m input-text-field" placeholder="Enter a text to be translated (Max 40 letters)" maxLength="40" onChange={onInputChange}></input>
-                    <button id="text-button" className="input-button" onClick={translateButtonClick}>GO</button>
-                </div>
+
             </div>
             <div className="translation-field-container">
+                <div className="translation-field-info bold-text">Translation</div>
                 <div className="translation-field">
                     {
                         symbols.map((s, i) => <Sign key={s + i} symbol={DEFAULT_PATH + s + ".png"} />)
                     }
                 </div>
-                <footer className="translation-field-footer"><div className="translation-field-info">Translation</div></footer>
+                <footer className="translation-field-footer">
+                    <div className="text-field-container">
+                        <span className="input-symbol">⌨|</span>
+                        <input id="words" className="text-size-m input-text-field" placeholder="Enter a text to be translated (Max 40 letters)" maxLength="40" onKeyDown={handleButtonClick} onChange={onInputChange}></input>
+                        <button id="text-button" className="input-button bold-text" onClick={translateButtonClick}>GO</button>
+                    </div>
+                </footer>
             </div>
         </div>
     );

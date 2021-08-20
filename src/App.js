@@ -7,7 +7,6 @@ import {
     NavLink
 } from "react-router-dom";
 import Login from "./components/StartupWindow/Login";
-import Startup from "./components/StartupWindow/Startup";
 import Profile from "./components/ProfileWindow/Profile";
 import Translation from "./components/TranslationWindow/Translation";
 import NotFound from "./components/NotFound/NotFound";
@@ -21,6 +20,7 @@ import { getStorage } from "./storage";
 const App = () => {
 
     const [userName, setUserName] = useState("");
+    const [page, setPage] = useState("Start");
 
     useEffect(() => {
         setUserName(getStorage("username"));
@@ -30,10 +30,14 @@ const App = () => {
         setUserName(name);
     }
 
+    const changeTitle = (title) => {
+        setPage(title);
+    }
+
     return (
         <BrowserRouter>
             <HeaderContainer>
-                <div className="main-page-text">Lost in translation</div>
+                <div className="main-page-text bold-text">Lost in translation - {page}</div>
                 <NavLink to="Profile">
                     <div id="username">
                     <div class="avatar-lg"><Image src="https://bootdey.com/img/Content/avatar/avatar2.png" id="img-avatar" alt="profile-image"/></div>
@@ -47,14 +51,15 @@ const App = () => {
             <AppContainer>
                 <main>
                     <Switch>
-                        <Route exact path="/" component={Startup} />
-                        <Route path="/login">
-                            <Login onLogin={handleUsername} />
+                        <Route path="/" exact>
+                            <Login handleTitle={changeTitle} onLogin={handleUsername} />
                         </Route>
                         <Route path="/profile">
-                            <Profile onLogout={handleUsername} />
+                            <Profile handleTitle={changeTitle} onLogout={handleUsername} />
                         </Route>
-                        <Route path="/translation" component={Translation} />
+                        <Route path="/translation">
+                            <Translation handleTitle={changeTitle} />
+                        </Route>
                         <Route path="*" component={NotFound} />
                     </Switch>
                 </main>

@@ -1,29 +1,52 @@
 .container {
     text-align: center;
-    margin: 0 10vw;
 }
 
 .header {
     text-align: left;
-    background-color: #FFC760;
     margin: 0;
     padding: 1rem;
     border-bottom: 2px solid #EAB452;
 }
 
+.translation-field-info, .header, #text-button {
+    background-color: #FFC760;
+}
+
+#text-button:hover, #text-button:active {
+    background-color: #dda63f;
+}
+
+#text-button {
+    box-shadow: 0 0.17rem #999;
+}
+
+#text-button:active {
+    box-shadow: 0 0.1rem #666;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
 .main-page-text {
     margin-left: 15vw;
     font-size: 36px;
-    font-weight: bold;
-
     width: 100%;
     margin: 0;
     font-family: verdana;
-    font-size: 3em;
+    font-size: 2.5em;
     font-weight: 550;
     text-align: center;
     text-transform: uppercase;
     text-shadow: rgb(145, 132, 132) 4px 5px 5px;
+}
+.profile-text {
+    margin-top: 2vh;
+}
+
+.button-group {
+    margin-top: 10px;
 }
 
 .main-page-profile {
@@ -40,24 +63,34 @@
 }
 
 .input-text-field {
-    width: 100%;
+    width: 80%;
+    margin: 6px 0;
     box-sizing: border-box;
-    padding: 1rem 4rem;
+    padding: 0.5rem 4rem;
     border-radius: 20px;
     outline: none;
+    border: 3px solid #6d48a8;
+}
+
+.input-text-field:focus {
+    border: 3px solid black;
+    background-color: lightblue;
 }
 
 .input-symbol, .input-button {
     position: absolute;
     z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .input-symbol {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    left: 12%;
 }
 
 .input-button {
-    transform: translate(-120%, 20%);
+    right: 12%;
 }
 
 #text-button {
@@ -92,42 +125,40 @@
 }
 #name-txt{
     color:black;
-    margin-left : 22px; 
+    margin-left : 15px; 
     font-weight: bold;
+    font-family: verdana;
+    text-transform: uppercase;
+    text-shadow: rgb(145, 132, 132) 4px 5px 5px;
 
 
 
 }
+#text-button {
+    width: 2.5rem;
+    height: 60%;
+    border-radius: 50%;
+}
 
 @media screen and (min-width: 1300px) {
     .text-size-m {
-        font-size: 1.4vw;
-    }
-    .input-symbol {
-        margin: 0.5vw 0.4vw;
+        font-size: 120%;
     }
 }
 
 @media screen and (max-width: 1300px) {
     .text-size-m {
-        font-size: 2vw;
-    }
-    .input-symbol {
-        margin: 0.6vw 0.5vw;
+        font-size: 100%;
     }
 }
 
 @media screen and (max-width: 900px) {
     .text-size-m {
-        font-size: 2.75vw;
-    }
-    .input-symbol {
-        margin: 0.5vw 1vw;
+        font-size: 73%;
     }
 }
 
-.translation-field-container {
-    margin-top: 10vh;
+.translation-field-container, .posts-field-container {
     border: 1px solid gray;
     border-radius: 20px;
     box-shadow: -0.1em -0.2em 1em gray;
@@ -135,29 +166,37 @@
     margin-bottom: 20px;
 }
 
-.translation-field {
+.posts-field-container{
+    height: 40vh;
+    text-align: left;
+}
+
+.translation-field, .posts-field {
     box-sizing: border-box;
     padding: 2em;
-    height: 90%;
+    height: 83%;
     overflow-y: auto;
 }
 
 .translation-field-footer {
-    background-color: purple;
-    min-height: 10%;
-    height: 2.5rem;
+    background-color: #845EC3;
+}
+
+.translation-field-footer {
+    text-align: center;
+    min-height: 17%;
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
+    border: 2px solid black;
 }
 
 .translation-field-info {
     position: absolute;
-    transform: translate(50%, 10%);
-    background-color: white;
+    border: 2px solid black;
     border-radius: 20px;
     width: 10rem;
     max-width: 20%;
-    padding: 0.3rem 0;
+    padding: 0.3rem 0.4rem;
 }
 
 .sign-img, .fallback-img {
