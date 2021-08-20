@@ -26,6 +26,10 @@ const Profile = (props) => {
         }
     })
 
+/**
+* Gets all posts and the first 10 posts by the currently logged in user
+* and updates the states.
+*/
     async function getUserPosts() {
         const userId = (await getUserData(getStorage("username")))[0].id;
         const p = (await getTextDataWithId(userId, 0));
@@ -33,6 +37,10 @@ const Profile = (props) => {
         setPosts(p);
         setLimitPosts(lp);
     }
+
+/**
+* Removes all posts by the logged in user.
+*/
     async function handleClearHistory() {
         for (const post of posts)
             (await deleteTextData(post.id))
