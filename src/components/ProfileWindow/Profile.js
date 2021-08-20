@@ -33,7 +33,6 @@ const Profile = (props) => {
         setPosts(p);
         setLimitPosts(lp);
     }
-
     async function handleClearHistory() {
         for (const post of posts)
             (await deleteTextData(post.id))

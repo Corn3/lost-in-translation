@@ -32,8 +32,14 @@
 
 .main-page-text {
     margin-left: 10vw;
-    font-size: 5vh;
     width: 50%;
+    margin: 0;
+    font-family: verdana;
+    font-size: 2.5em;
+    font-weight: 550;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: rgb(145, 132, 132) 4px 5px 5px;
 }
 .profile-text {
     margin-top: 2vh;
@@ -87,10 +93,45 @@
     right: 12%;
 }
 
-#mb{
-    width: 50%;
+#text-button {
+    width: 3rem;
+    height: 70%;
+    border-radius: 100%;
+}
+
+#input-txt {
+    width: 45%;
     text-align: center;
-    margin: 0 10vw 0 21vw; 
+    margin: 0 10vw 0 21vw;
+    border-radius:20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+}
+#lg-btn{
+    border-radius:40px;
+  
+}
+.avatar-lg {
+    height: 88px;
+    width: 88px;
+}
+#img-avatar {
+    padding: .25rem;
+    background-color: rgb(24, 15, 15);
+    border: 1px solid #e6e3de;
+    border-radius: 50px;
+    max-width: 100%;
+    height: auto;
+}
+#name-txt{
+    color:black;
+    margin-left : 15px; 
+    font-weight: bold;
+    font-family: verdana;
+    text-transform: uppercase;
+    text-shadow: rgb(145, 132, 132) 4px 5px 5px;
+
+
 
 }
 #text-button {
@@ -104,11 +145,13 @@
         font-size: 120%;
     }
 }
+
 @media screen and (max-width: 1300px) {
     .text-size-m {
         font-size: 100%;
     }
 }
+
 @media screen and (max-width: 900px) {
     .text-size-m {
         font-size: 73%;
