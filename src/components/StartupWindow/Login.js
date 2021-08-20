@@ -16,7 +16,7 @@ const Login = props => {
 
     useEffect(() => {
         if (getStorage("username")) {
-            history.push('/');
+            history.push('/translation');
         } else {
             props.handleTitle("Login");
         }

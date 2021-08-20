@@ -7,7 +7,6 @@ import {
     NavLink
 } from "react-router-dom";
 import Login from "./components/StartupWindow/Login";
-import Startup from "./components/StartupWindow/Startup";
 import Profile from "./components/ProfileWindow/Profile";
 import Translation from "./components/TranslationWindow/Translation";
 import NotFound from "./components/NotFound/NotFound";
@@ -48,8 +47,7 @@ const App = () => {
             <AppContainer>
                 <main>
                     <Switch>
-                        <Route exact path="/" component={Startup} />
-                        <Route path="/login">
+                        <Route path="/" exact>
                             <Login handleTitle={changeTitle} onLogin={handleUsername} />
                         </Route>
                         <Route path="/profile">
