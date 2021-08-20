@@ -70,6 +70,7 @@
     border-radius: 20px;
     outline: none;
     border: 3px solid #6d48a8;
+  
 }
 
 .input-text-field:focus {
@@ -101,14 +102,14 @@
 
 #input-txt {
     width: 45%;
-    text-align: center;
-    margin: 0 10vw 0 21vw;
+    margin-left: 200px;
     border-radius:20px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 
 }
 #lg-btn{
     border-radius:40px;
+   
   
 }
 .avatar-lg {
@@ -168,6 +169,25 @@
     }
 }
 
+.login-field-container{
+    border: 1px solid gray;
+    border-radius: 20px;
+    box-shadow: -0.1em -0.2em 1em gray;
+    margin-bottom: 20px;
+}
+
+.login-field-container {
+    height: 40vh;
+    width: 70%;
+    margin: 20px;
+    margin-left: 125px;
+}
+.login-field {
+    padding: 2em;
+    height: 83%;
+  
+}
+
 .translation-field-container, .posts-field-container {
     border: 1px solid gray;
     border-radius: 20px;
@@ -193,6 +213,7 @@
 .translation-field {
     padding: 2em;
     height: 83%;
+    
 }
 
 .posts-field {
