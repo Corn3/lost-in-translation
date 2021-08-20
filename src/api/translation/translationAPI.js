@@ -1,6 +1,9 @@
 import { DEFAULT_URL } from "../../resource/constants";
 const TEXT_DEFAULT_URL = DEFAULT_URL + "searches";
-
+/**
+* Posts data to the database, the param will always
+* be an object with a post and poster id 
+*/
 export async function postTextData(text) {
     try {
         const response = await fetch(TEXT_DEFAULT_URL, {
@@ -15,7 +18,9 @@ export async function postTextData(text) {
         console.log(error);
     }
 }
-
+/**
+* Fetches all posts made by users.
+*/
 export async function getTextData() {
     try {
         const response = await fetch(TEXT_DEFAULT_URL);
@@ -25,6 +30,11 @@ export async function getTextData() {
     }
 }
 
+
+/**
+* Fetches posts made by a specific user.
+*
+*/
 export async function getTextDataWithId(id, limit = 0) {
     try {
         const url = TEXT_DEFAULT_URL + "?poster_id=" + id + ((limit > 0) ? "&_limit=" + limit : "");
@@ -36,6 +46,11 @@ export async function getTextDataWithId(id, limit = 0) {
         console.log(error);
     }
 }
+
+/**
+* Deletes a specified post, the param will always
+* be an id for the post that needs to be deleted.
+*/
 export async function deleteTextData(id) {
     try {
         const response = await fetch(TEXT_DEFAULT_URL + "/" + id, {
