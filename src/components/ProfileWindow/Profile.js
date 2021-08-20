@@ -20,11 +20,11 @@ const Profile = (props) => {
     useEffect(() => {
         if (!getStorage("username")) {
             history.push('/');
-        } else {
+        } else if(posts.length === 0){
             getUserPosts();
             props.handleTitle("Profile");
         }
-    }, [])
+    })
 
     async function getUserPosts() {
         const userId = (await getUserData(getStorage("username")))[0].id;
@@ -36,8 +36,8 @@ const Profile = (props) => {
     async function handleClearHistory() {
         for (const post of posts)
             (await deleteTextData(post.id))
-        setPosts("");
-        setLimitPosts("");
+        setPosts([]);
+        setLimitPosts([]);
     }
 
     return (

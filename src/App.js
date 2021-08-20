@@ -4,7 +4,8 @@ import {
     BrowserRouter,
     Switch,
     Route,
-    NavLink
+    NavLink,
+    useHistory
 } from "react-router-dom";
 import Login from "./components/StartupWindow/Login";
 import Profile from "./components/ProfileWindow/Profile";
@@ -12,7 +13,6 @@ import Translation from "./components/TranslationWindow/Translation";
 import NotFound from "./components/NotFound/NotFound";
 import AppContainer from "./hoc/AppContainer";
 import HeaderContainer from "./hoc/HeaderContainer";
-import { MDBIcon } from "mdbreact";
 import { Image, } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { getStorage, removeItemStorage } from "./storage";
@@ -23,6 +23,7 @@ const App = () => {
     const [page, setPage] = useState("Start");
     const [loginAction, setLoginAction] = useState("");
     const [navLinks, setNavLinks] = useState([]);
+    const history = useHistory();
 
     useEffect(() => {
         const user = getStorage("username");
