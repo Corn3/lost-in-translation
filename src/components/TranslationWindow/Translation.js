@@ -28,6 +28,10 @@ const Translation = (props) => {
         sendData();
     }
 
+/**
+* Checks if the user has entered the right number
+* of characters.
+*/
     const checkCorrectInput = () => {
         if (words.length === 0) {
             return false;
@@ -42,6 +46,11 @@ const Translation = (props) => {
         }
     }
 
+/**
+* Retrieves the id of the currently logged in user
+* and adds the posted text to the database for
+* that user.
+*/
     async function sendData() {
         if(checkCorrectInput() === false) {
             alert("Please enter letters, more than 0 and max 40.")
