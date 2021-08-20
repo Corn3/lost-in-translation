@@ -14,15 +14,20 @@ import AppContainer from "./hoc/AppContainer";
 import HeaderContainer from "./hoc/HeaderContainer";
 import { MDBIcon } from "mdbreact";
 import { useEffect, useState } from "react";
-import { getStorage } from "./storage";
+import { getStorage, removeItemStorage } from "./storage";
 
 const App = () => {
 
     const [userName, setUserName] = useState("");
     const [page, setPage] = useState("Start");
+    const [loginAction, setLoginAction] = useState("");
+    const [navLinks, setNavLinks] = useState([]);
 
     useEffect(() => {
-        setUserName(getStorage("username"));
+        const user = getStorage("username");
+        const login = (!user) ? "" : "Logout"
+        setUserName(user);
+        setLoginAction(login);
     }, [])
 
     const handleUsername = (name = "") => {
@@ -31,18 +36,44 @@ const App = () => {
 
     const changeTitle = (title) => {
         setPage(title);
+        if (getStorage("username"))
+            addLinksToNav();
+    }
+
+    const handleLoginAction = () => {
+        if (loginAction === "Logout" && window.confirm("Are you sure you wish to logout?")) {
+            removeItemStorage("username");
+            setPage("");
+            setUserName("");
+            setLoginAction("");
+            setNavLinks([]);
+        }
+    }
+
+    const addLinksToNav = () => {
+        setLoginAction("Logout")
+        setNavLinks(["Create post", "Logout"]);
     }
 
     return (
         <BrowserRouter>
             <HeaderContainer>
                 <div className="main-page-text bold-text">Lost in translation - {page}</div>
-                <NavLink to="Profile">
-                    <div id="username">
-                        <p> <MDBIcon icon="user" className="mr-2" /> {userName}</p>
-                    </div>
+                <NavLink to="profile">
+                    <div> <MDBIcon icon="user" className="mr-2" /> {userName}</div>
                 </NavLink>
-                <div className="main-page-profile"></div>
+                <ul className="link-bar">
+                    <li>
+                        <NavLink to={page} onClick={handleLoginAction}>
+                            {navLinks[1]}
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="translation">
+                            {navLinks[0]}
+                        </NavLink>
+                    </li>
+                </ul>
             </HeaderContainer>
             <AppContainer>
                 <main>
@@ -51,7 +82,7 @@ const App = () => {
                             <Login handleTitle={changeTitle} onLogin={handleUsername} />
                         </Route>
                         <Route path="/profile">
-                            <Profile handleTitle={changeTitle} onLogout={handleUsername} />
+                            <Profile handleTitle={changeTitle} />
                         </Route>
                         <Route path="/translation">
                             <Translation handleTitle={changeTitle} />
