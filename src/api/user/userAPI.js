@@ -2,9 +2,11 @@ import { DEFAULT_URL } from "../../resource/constants";
 
 const USERS_DEFAULT_URL = DEFAULT_URL + "users";
 /**
-* Posts user data to the database,
-*/
-
+ * Adds a user to the database, if the user already exists
+ * this function wont run. Throws an error if there was something wrong 
+ * with the database.
+ * @param {*} data 
+ */
 export async function postUserData(data) {
     fetch(USERS_DEFAULT_URL, {
         method: 'POST',
@@ -22,8 +24,12 @@ export async function postUserData(data) {
         });
 }
 /**
-* This Fetches user data.
-*/
+ * Retrieves a user based on the name param. If something went wrong with the
+ * database an error is thrown, else returns the user.
+ * 
+ * @param {*} name the name of the user to be retrieved.
+ * @returns the user with the specified name.
+ */
 export async function getUserData(name) {
     try {
         const response = (await fetch(USERS_DEFAULT_URL + "?name=" + name));

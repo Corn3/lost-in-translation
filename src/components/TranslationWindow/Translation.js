@@ -16,13 +16,18 @@ const Translation = (props) => {
     const DEFAULT_PATH = `${process.env.PUBLIC_URL}/assets/images/`
     const history = useHistory();
 
+    /**
+     * Runs first time this page opens, 
+     * and when the username gets updated 
+     * (when the user logs out on this page).
+     */
     useEffect(() => {
         if (!getStorage("username")) {
             history.push('/');
         } else {
             props.handleTitle("Translation");
         }
-    })
+    }, [props.user])
 
     const translateButtonClick = () => {
         sendData();

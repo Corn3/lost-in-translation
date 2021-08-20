@@ -17,6 +17,11 @@ const Profile = (props) => {
     const [posts, setPosts] = useState([]);
     const [limitPosts, setLimitPosts] = useState([]);
 
+    /**
+     * Runs first time this page opens, 
+     * and when the username gets updated 
+     * (when the user logs out on this page).
+     */
     useEffect(() => {
         if (!getStorage("username")) {
             history.push('/');
@@ -24,7 +29,7 @@ const Profile = (props) => {
             getUserPosts();
             props.handleTitle("Profile");
         }
-    })
+    },[props.user])
 
 /**
 * Gets all posts and the first 10 posts by the currently logged in user
