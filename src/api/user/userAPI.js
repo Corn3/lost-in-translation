@@ -1,7 +1,6 @@
 import { DEFAULT_URL } from "../../resource/constants";
 
 const USERS_DEFAULT_URL = DEFAULT_URL + "users";
-
 /**
  * Adds a user to the database, if the user already exists
  * this function wont run. Throws an error if there was something wrong 
@@ -24,7 +23,6 @@ export async function postUserData(data) {
             console.error('Error:', error);
         });
 }
-
 /**
  * Retrieves a user based on the name param. If something went wrong with the
  * database an error is thrown, else returns the user.

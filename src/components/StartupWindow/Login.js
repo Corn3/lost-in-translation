@@ -6,10 +6,10 @@ import { getStorage, setItemStorage } from '../../storage';
 
 
 const Login = props => {
-    // This handles the user's name input
+    // user's name input
     const [username, setUsername] = useState('');
     const handleUserInput = event => {
-        setUsername(event.target.value); //asyn
+        setUsername(event.target.value); 
     };
 
     const history = useHistory();
@@ -30,8 +30,12 @@ const Login = props => {
             return true;
         }
     }
+    
+ /**
+* This method handles the user login. by validating the new user input,
+* and by checking if the is already signed in befor.
+*/
 
-    // This saves the user's name to local storage
     async function handleLogin() {
         if (username.match(/(^[A-Za-z]{1,10})([ ]{0,1})([A-Za-z]{3,10})$/)) {
 
@@ -56,9 +60,9 @@ const Login = props => {
 
     return (
         <main className="Login">
-            <div className="translation-field-container" id= "form-container">
-                <div className="translation-field">
-                    <form className="mt-3">
+            <div className="login-field-container" >
+                <div className="login-field">
+                    <form >
                         <div className="mb-3">
                             <input id="username" type="text" placeholder="What's your full name?" id="input-txt" className="form-control" onChange={handleUserInput} />
                         </div>
