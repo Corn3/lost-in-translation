@@ -13,7 +13,7 @@ import NotFound from "./components/NotFound/NotFound";
 import AppContainer from "./hoc/AppContainer";
 import HeaderContainer from "./hoc/HeaderContainer";
 import { MDBIcon } from "mdbreact";
-import { Image,  } from "react-bootstrap";
+import { Image, } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { getStorage, removeItemStorage } from "./storage";
 
@@ -60,9 +60,9 @@ const App = () => {
         <BrowserRouter>
             <HeaderContainer>
                 <div className="main-page-text bold-text">Lost in translation - {page}</div>
-                <NavLink to="Profile">
+                <NavLink id="profile-container" to="Profile">
                     <div id="username">
-                    <div class="avatar-lg"><Image src="https://bootdey.com/img/Content/avatar/avatar2.png" id="img-avatar" alt="profile-image"/></div>
+                        <Image src="https://bootdey.com/img/Content/avatar/avatar2.png" id="img-avatar" alt="profile-image" />
                         <p id="name-txt"> {userName}</p>
                     </div>
                 </NavLink>
